@@ -15,12 +15,12 @@ const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
 //   }
 //   console.log("Good job! You've outputted lat & long: ", latLong);
 // });
-const myCoords = { latitude: 49.3678, longitude: -122.9278 };
+// const myCoords = { latitude: 49.3678, longitude: -122.9278 };
 
-fetchISSFlyOverTimes(myCoords, (error, data) => {
-  if (error) {
-    console.log("Sorry, no dice", error);
-    return;
-  }
-  console.log("Good job! ISS is overhead during this window: ", data);
-});
+// fetchISSFlyOverTimes(myCoords, (error, data) => {
+//   if (error) {
+//     console.log("Sorry, no dice", error);
+//     return;
+//   }
+//   console.log("Good job! ISS is overhead during this window: ", data);
+// });
