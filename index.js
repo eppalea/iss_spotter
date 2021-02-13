@@ -1,4 +1,4 @@
-const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
+// const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
 
 // fetchMyIP((error, ip) => {
 //   if (error) {
@@ -24,3 +24,27 @@ const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
 //   }
 //   console.log("Good job! ISS is overhead during this window: ", data);
 // });
+
+const { nextISSTimesForMyLocation } = require('./iss');
+
+
+
+nextISSTimesForMyLocation((error, nextPasses) => {
+  if (error) {
+    return console.log("It didn't work!", error);
+  }
+  //success, prints out the details!
+  // console.log('the next passes are: ', nextPasses);
+  passTimeInfo(nextPasses);
+});
+
+const passTimeInfo = function(nextPasses) {
+  for (const pass of nextPasses) {
+    // console.log('the pass is: ', pass);
+    const datetime = new Date(0);
+    datetime.setUTCSeconds(pass.risetime);
+    // console.log("the datetime is: ", datetime);
+    const duration = pass.duration;
+    console.log(`Next pass at ${datetime} for ${duration} seconds!`);
+  }
+};
